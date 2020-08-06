@@ -39,6 +39,18 @@ model_overfit = decision_tree_overfit(X, Y)
 # -----------------------------------------------------------------------------------------
 shadow_data_train_1 = generate_census_shadow(dataset, 1000)
 shadow_data_test_1 = generate_census_shadow(dataset, 1000)
+
+shadow_data_train_2 = generate_census_shadow(dataset, 1000)
+shadow_data_test_2 = generate_census_shadow(dataset, 1000)
+
+shadow_data_train_3 = generate_census_shadow(dataset, 1000)
+shadow_data_test_3 = generate_census_shadow(dataset, 1000)
+
+shadow_data_train_4 = generate_census_shadow(dataset, 1000)
+shadow_data_test_4 = generate_census_shadow(dataset, 1000)
+
+shadow_data_train_5 = generate_census_shadow(dataset, 1000)
+shadow_data_test_5 = generate_census_shadow(dataset, 1000)
 # -----------------------------------------------------------------------------------------
 
 # split the data into x and y for using in the model
@@ -46,10 +58,38 @@ shadow_data_test_1 = generate_census_shadow(dataset, 1000)
 shadow_data_train_labels_1 = shadow_data_train_1['over_50']
 shadow_data_train_1 = shadow_data_train_1.drop(['over_50'], axis=1)
 
+shadow_data_train_labels_2 = shadow_data_train_2['over_50']
+shadow_data_train_2 = shadow_data_train_2.drop(['over_50'], axis=1)
+
+shadow_data_train_labels_3 = shadow_data_train_3['over_50']
+shadow_data_train_3 = shadow_data_train_3.drop(['over_50'], axis=1)
+
+shadow_data_train_labels_4 = shadow_data_train_4['over_50']
+shadow_data_train_4 = shadow_data_train_4.drop(['over_50'], axis=1)
+
+shadow_data_train_labels_5 = shadow_data_train_5['over_50']
+shadow_data_train_5 = shadow_data_train_5.drop(['over_50'], axis=1)
+
 shadow_data_test_labels_1 = shadow_data_test_1['over_50']
 shadow_data_test_1 = shadow_data_test_1.drop(['over_50'], axis=1)
 
+shadow_data_test_labels_2 = shadow_data_test_2['over_50']
+shadow_data_test_2 = shadow_data_test_2.drop(['over_50'], axis=1)
+
+shadow_data_test_labels_3 = shadow_data_test_3['over_50']
+shadow_data_test_3 = shadow_data_test_3.drop(['over_50'], axis=1)
+
+shadow_data_test_labels_4 = shadow_data_test_4['over_50']
+shadow_data_test_4 = shadow_data_test_4.drop(['over_50'], axis=1)
+
+shadow_data_test_labels_5 = shadow_data_test_5['over_50']
+shadow_data_test_5 = shadow_data_test_5.drop(['over_50'], axis=1)
+
 shadow_model_1 = decision_tree_overfit(shadow_data_train_1, shadow_data_train_labels_1)
+shadow_model_2 = decision_tree_overfit(shadow_data_train_2, shadow_data_train_labels_2)
+shadow_model_3 = decision_tree_overfit(shadow_data_train_3, shadow_data_train_labels_3)
+shadow_model_4 = decision_tree_overfit(shadow_data_train_4, shadow_data_train_labels_4)
+shadow_model_5 = decision_tree_overfit(shadow_data_train_5, shadow_data_train_labels_5)
 # -----------------------------------------------------------------------------------------
 
 
@@ -59,17 +99,52 @@ shadow_model_1 = decision_tree_overfit(shadow_data_train_1, shadow_data_train_la
 shadow_data_train_predict_1, shadow_data_test_predict_1 = predict_shadow_data(shadow_data_train_1, shadow_data_test_1,
                                                                               shadow_model_1, 1000)
 
+shadow_data_train_predict_2, shadow_data_test_predict_2 = predict_shadow_data(shadow_data_train_2, shadow_data_test_2,
+                                                                              shadow_model_2, 1000)
+
+shadow_data_train_predict_3, shadow_data_test_predict_3 = predict_shadow_data(shadow_data_train_3, shadow_data_test_3,
+                                                                              shadow_model_3, 1000)
+
+shadow_data_train_predict_4, shadow_data_test_predict_4 = predict_shadow_data(shadow_data_train_4, shadow_data_test_4,
+                                                                              shadow_model_4, 1000)
+
+shadow_data_train_predict_5, shadow_data_test_predict_5 = predict_shadow_data(shadow_data_train_5, shadow_data_test_5,
+                                                                              shadow_model_5, 1000)
+
 in_prediction_set_1, out_prediction_set_1 = create_in_out_prediction_set_census(shadow_data_train_predict_1,
                                                                                 shadow_data_train_labels_1,
                                                                                 shadow_data_test_predict_1,
                                                                                 shadow_data_test_labels_1)
+
+in_prediction_set_2, out_prediction_set_2 = create_in_out_prediction_set_census(shadow_data_train_predict_2,
+                                                                                shadow_data_train_labels_2,
+                                                                                shadow_data_test_predict_2,
+                                                                                shadow_data_test_labels_2)
+in_prediction_set_3, out_prediction_set_3 = create_in_out_prediction_set_census(shadow_data_train_predict_3,
+                                                                                shadow_data_train_labels_3,
+                                                                                shadow_data_test_predict_3,
+                                                                                shadow_data_test_labels_3)
+
+in_prediction_set_4, out_prediction_set_4 = create_in_out_prediction_set_census(shadow_data_train_predict_4,
+                                                                                shadow_data_train_labels_4,
+                                                                                shadow_data_test_predict_4,
+                                                                                shadow_data_test_labels_4)
+
+in_prediction_set_5, out_prediction_set_5 = create_in_out_prediction_set_census(shadow_data_train_predict_5,
+                                                                                shadow_data_train_labels_5,
+                                                                                shadow_data_test_predict_5,
+                                                                                shadow_data_test_labels_5)
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
 
 # Join the in and out data and train the model
 # -----------------------------------------------------------------------------------------
-prediction_set = pd.concat([in_prediction_set_1, out_prediction_set_1])
+prediction_set = pd.concat([in_prediction_set_1, out_prediction_set_1, in_prediction_set_2,
+                            out_prediction_set_2, in_prediction_set_3, out_prediction_set_3,
+                            in_prediction_set_4, out_prediction_set_4, in_prediction_set_5,
+                            out_prediction_set_5])
+
 prediction_set_over = prediction_set.loc[prediction_set['class_label'].str.contains(">50K")]
 prediction_set_under = prediction_set.loc[prediction_set['class_label'].str.contains("<=50K")]
 
@@ -81,6 +156,7 @@ attack_model_over = decision_tree_overfit(pd.get_dummies(x_prediction_set_over),
 
 y_prediction_set_under = prediction_set_under['in/out']
 x_prediction_set_under = prediction_set_under.drop(['in/out'], axis=1)
+
 
 attack_model_under = decision_tree_overfit(pd.get_dummies(x_prediction_set_under), y_prediction_set_under)
 # -----------------------------------------------------------------------------------------

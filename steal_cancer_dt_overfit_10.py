@@ -39,6 +39,21 @@ shadow_data_test_4 = generate_cancer_shadow(dataset, 1000)
 
 shadow_data_train_5 = generate_cancer_shadow(dataset, 1000)
 shadow_data_test_5 = generate_cancer_shadow(dataset, 1000)
+
+shadow_data_train_6 = generate_cancer_shadow(dataset, 1000)
+shadow_data_test_6 = generate_cancer_shadow(dataset, 1000)
+
+shadow_data_train_7 = generate_cancer_shadow(dataset, 1000)
+shadow_data_test_7 = generate_cancer_shadow(dataset, 1000)
+
+shadow_data_train_8 = generate_cancer_shadow(dataset, 1000)
+shadow_data_test_8 = generate_cancer_shadow(dataset, 1000)
+
+shadow_data_train_9 = generate_cancer_shadow(dataset, 1000)
+shadow_data_test_9 = generate_cancer_shadow(dataset, 1000)
+
+shadow_data_train_10 = generate_cancer_shadow(dataset, 1000)
+shadow_data_test_10 = generate_cancer_shadow(dataset, 1000)
 # -----------------------------------------------------------------------------------------
 
 # split the data into x and y for using in the model
@@ -58,6 +73,23 @@ shadow_data_train_4 = shadow_data_train_4.drop(['diagnosis'], axis=1)
 shadow_data_train_labels_5 = shadow_data_train_5['diagnosis']
 shadow_data_train_5 = shadow_data_train_5.drop(['diagnosis'], axis=1)
 
+shadow_data_train_labels_6 = shadow_data_train_6['diagnosis']
+shadow_data_train_6 = shadow_data_train_6.drop(['diagnosis'], axis=1)
+
+shadow_data_train_labels_7 = shadow_data_train_7['diagnosis']
+shadow_data_train_7 = shadow_data_train_7.drop(['diagnosis'], axis=1)
+
+shadow_data_train_labels_8 = shadow_data_train_8['diagnosis']
+shadow_data_train_8 = shadow_data_train_8.drop(['diagnosis'], axis=1)
+
+shadow_data_train_labels_9 = shadow_data_train_9['diagnosis']
+shadow_data_train_9 = shadow_data_train_9.drop(['diagnosis'], axis=1)
+
+shadow_data_train_labels_10 = shadow_data_train_10['diagnosis']
+shadow_data_train_10 = shadow_data_train_10.drop(['diagnosis'], axis=1)
+
+# -----------------------------------------------------------------------------------------
+
 shadow_data_test_labels_1 = shadow_data_test_1['diagnosis']
 shadow_data_test_1 = shadow_data_test_1.drop(['diagnosis'], axis=1)
 
@@ -73,11 +105,33 @@ shadow_data_test_4 = shadow_data_test_4.drop(['diagnosis'], axis=1)
 shadow_data_test_labels_5 = shadow_data_test_5['diagnosis']
 shadow_data_test_5 = shadow_data_test_5.drop(['diagnosis'], axis=1)
 
+shadow_data_test_labels_6 = shadow_data_test_6['diagnosis']
+shadow_data_test_6 = shadow_data_test_6.drop(['diagnosis'], axis=1)
+
+shadow_data_test_labels_7 = shadow_data_test_7['diagnosis']
+shadow_data_test_7 = shadow_data_test_7.drop(['diagnosis'], axis=1)
+
+shadow_data_test_labels_8 = shadow_data_test_8['diagnosis']
+shadow_data_test_8 = shadow_data_test_8.drop(['diagnosis'], axis=1)
+
+shadow_data_test_labels_9 = shadow_data_test_9['diagnosis']
+shadow_data_test_9 = shadow_data_test_9.drop(['diagnosis'], axis=1)
+
+shadow_data_test_labels_10 = shadow_data_test_10['diagnosis']
+shadow_data_test_10 = shadow_data_test_10.drop(['diagnosis'], axis=1)
+
+# -----------------------------------------------------------------------------------------
+
 shadow_model_1 = decision_tree_overfit(shadow_data_train_1, shadow_data_train_labels_1)
 shadow_model_2 = decision_tree_overfit(shadow_data_train_2, shadow_data_train_labels_2)
 shadow_model_3 = decision_tree_overfit(shadow_data_train_3, shadow_data_train_labels_3)
 shadow_model_4 = decision_tree_overfit(shadow_data_train_4, shadow_data_train_labels_4)
 shadow_model_5 = decision_tree_overfit(shadow_data_train_5, shadow_data_train_labels_5)
+shadow_model_6 = decision_tree_overfit(shadow_data_train_6, shadow_data_train_labels_6)
+shadow_model_7 = decision_tree_overfit(shadow_data_train_7, shadow_data_train_labels_7)
+shadow_model_8 = decision_tree_overfit(shadow_data_train_8, shadow_data_train_labels_8)
+shadow_model_9 = decision_tree_overfit(shadow_data_train_9, shadow_data_train_labels_9)
+shadow_model_10 = decision_tree_overfit(shadow_data_train_10, shadow_data_train_labels_10)
 # -----------------------------------------------------------------------------------------
 
 
@@ -98,6 +152,23 @@ shadow_data_train_predict_4, shadow_data_test_predict_4 = predict_shadow_data(sh
 
 shadow_data_train_predict_5, shadow_data_test_predict_5 = predict_shadow_data(shadow_data_train_5, shadow_data_test_5,
                                                                               shadow_model_5, 1000)
+
+shadow_data_train_predict_6, shadow_data_test_predict_6 = predict_shadow_data(shadow_data_train_6, shadow_data_test_6,
+                                                                              shadow_model_6, 1000)
+
+shadow_data_train_predict_7, shadow_data_test_predict_7 = predict_shadow_data(shadow_data_train_7, shadow_data_test_7,
+                                                                              shadow_model_7, 1000)
+
+shadow_data_train_predict_8, shadow_data_test_predict_8 = predict_shadow_data(shadow_data_train_8, shadow_data_test_8,
+                                                                              shadow_model_8, 1000)
+
+shadow_data_train_predict_9, shadow_data_test_predict_9 = predict_shadow_data(shadow_data_train_9, shadow_data_test_9,
+                                                                              shadow_model_9, 1000)
+
+shadow_data_train_predict_10, shadow_data_test_predict_10 = predict_shadow_data(shadow_data_train_10, shadow_data_test_10,
+                                                                              shadow_model_10, 1000)
+
+# --------------------------------------------------------------------------------------------------------------------------------------
 
 in_prediction_set_1, out_prediction_set_1 = create_in_out_prediction_set_cancer(shadow_data_train_predict_1,
                                                                                 shadow_data_train_labels_1,
@@ -123,6 +194,30 @@ in_prediction_set_5, out_prediction_set_5 = create_in_out_prediction_set_cancer(
                                                                                 shadow_data_test_predict_5,
                                                                                 shadow_data_test_labels_5)
 
+in_prediction_set_6, out_prediction_set_6 = create_in_out_prediction_set_cancer(shadow_data_train_predict_6,
+                                                                                shadow_data_train_labels_6,
+                                                                                shadow_data_test_predict_6,
+                                                                                shadow_data_test_labels_6)
+
+in_prediction_set_7, out_prediction_set_7 = create_in_out_prediction_set_cancer(shadow_data_train_predict_7,
+                                                                                shadow_data_train_labels_7,
+                                                                                shadow_data_test_predict_7,
+                                                                                shadow_data_test_labels_7)
+in_prediction_set_8, out_prediction_set_8 = create_in_out_prediction_set_cancer(shadow_data_train_predict_8,
+                                                                                shadow_data_train_labels_8,
+                                                                                shadow_data_test_predict_8,
+                                                                                shadow_data_test_labels_8)
+
+in_prediction_set_9, out_prediction_set_9 = create_in_out_prediction_set_cancer(shadow_data_train_predict_9,
+                                                                                shadow_data_train_labels_9,
+                                                                                shadow_data_test_predict_9,
+                                                                                shadow_data_test_labels_9)
+
+in_prediction_set_10, out_prediction_set_10 = create_in_out_prediction_set_cancer(shadow_data_train_predict_10,
+                                                                                shadow_data_train_labels_10,
+                                                                                shadow_data_test_predict_10,
+                                                                                shadow_data_test_labels_10)
+
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -131,7 +226,10 @@ in_prediction_set_5, out_prediction_set_5 = create_in_out_prediction_set_cancer(
 prediction_set = pd.concat([in_prediction_set_1, out_prediction_set_1, in_prediction_set_2,
                             out_prediction_set_2, in_prediction_set_3, out_prediction_set_3,
                             in_prediction_set_4, out_prediction_set_4, in_prediction_set_5,
-                            out_prediction_set_5])
+                            out_prediction_set_5, in_prediction_set_6, out_prediction_set_6,
+                            in_prediction_set_7, out_prediction_set_7, in_prediction_set_8,
+                            out_prediction_set_8, in_prediction_set_9, out_prediction_set_9,
+                            in_prediction_set_10, out_prediction_set_10])
 
 prediction_set_malignant = prediction_set.loc[prediction_set['class_label'] == "M"]
 prediction_set_benign = prediction_set.loc[prediction_set['class_label'] == "B"]

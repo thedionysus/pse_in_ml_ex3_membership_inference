@@ -65,15 +65,12 @@ prediction_set_benign = prediction_set.loc[prediction_set['class_label'] == "B"]
 y_prediction_set_malignant = prediction_set_malignant['in/out']
 x_prediction_set_malignant = prediction_set_malignant.drop(['in/out'], axis=1)
 
-attack_model_malignant = DecisionTreeClassifier()
-attack_model_malignant = create_attack_model(attack_model_malignant, x_prediction_set_malignant,
-                                             y_prediction_set_malignant)
+attack_model_malignant = decision_tree_overfit(pd.get_dummies(x_prediction_set_malignant), y_prediction_set_malignant)
 
 y_prediction_set_benign = prediction_set_benign['in/out']
 x_prediction_set_benign = prediction_set_benign.drop(['in/out'], axis=1)
 
-attack_model_benign = DecisionTreeClassifier()
-attack_model_benign = create_attack_model(attack_model_benign, x_prediction_set_benign, y_prediction_set_benign)
+attack_model_benign = decision_tree_overfit(pd.get_dummies(x_prediction_set_benign), y_prediction_set_benign)
 # -----------------------------------------------------------------------------------------
 
 # Predict the test real data stored and store the results as in
