@@ -37,38 +37,39 @@ model_overfit = decision_tree_overfit(X, Y)
 
 # Generating the shadow data
 # -----------------------------------------------------------------------------------------
-shadow_data_train = generate_census_shadow(dataset, 1000)
-shadow_data_test = generate_census_shadow(dataset, 1000)
+shadow_data_train_1 = generate_census_shadow(dataset, 1000)
+shadow_data_test_1 = generate_census_shadow(dataset, 1000)
 # -----------------------------------------------------------------------------------------
-
 
 # split the data into x and y for using in the model
 # -----------------------------------------------------------------------------------------
-shadow_data_train_labels = shadow_data_train['over_50']
-shadow_data_train = shadow_data_train.drop(['over_50'], axis=1)
+shadow_data_train_labels_1 = shadow_data_train_1['over_50']
+shadow_data_train_1 = shadow_data_train_1.drop(['over_50'], axis=1)
 
-shadow_data_test_labels = shadow_data_test['over_50']
-shadow_data_test = shadow_data_test.drop(['over_50'], axis=1)
+shadow_data_test_labels_1 = shadow_data_test_1['over_50']
+shadow_data_test_1 = shadow_data_test_1.drop(['over_50'], axis=1)
+
+shadow_model_1 = decision_tree_overfit(shadow_data_train_1, shadow_data_train_labels_1)
 # -----------------------------------------------------------------------------------------
 
 
 # Predict the shadow data and create the prediction set that is used as a dataset for the attack model
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
-shadow_data_train_predict, shadow_data_test_predict = predict_shadow_data(shadow_data_train, shadow_data_test,
-                                                                          model_overfit, 1000)
+shadow_data_train_predict_1, shadow_data_test_predict_1 = predict_shadow_data(shadow_data_train_1, shadow_data_test_1,
+                                                                              shadow_model_1, 1000)
 
-in_prediction_set, out_prediction_set = create_in_out_prediction_set_census(shadow_data_train_predict,
-                                                                            shadow_data_train_labels,
-                                                                            shadow_data_test_predict,
-                                                                            shadow_data_test_labels)
+in_prediction_set_1, out_prediction_set_1 = create_in_out_prediction_set_census(shadow_data_train_predict_1,
+                                                                                shadow_data_train_labels_1,
+                                                                                shadow_data_test_predict_1,
+                                                                                shadow_data_test_labels_1)
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
 
 # Join the in and out data and train the model
 # -----------------------------------------------------------------------------------------
-prediction_set = pd.concat([in_prediction_set, out_prediction_set])
+prediction_set = pd.concat([in_prediction_set_1, out_prediction_set_1])
 prediction_set_over = prediction_set.loc[prediction_set['class_label'].str.contains(">50K")]
 prediction_set_under = prediction_set.loc[prediction_set['class_label'].str.contains("<=50K")]
 
