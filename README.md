@@ -25,5 +25,6 @@ Princ Mullatahiri
 ### Contact
 Should you have any questions or concerns, please do not hesitate to contact us at:
 
-[e11813054@student.tuwien.ac.at](e11813054@student.tuwien.ac.at)
-[e11846033@student.tuwien.ac.at](e11846033@student.tuwien.ac.at)
+e11813054@student.tuwien.ac.at
+
+e11846033@student.tuwien.ac.at
